@@ -1,4 +1,4 @@
-# sui_returns_app.py — SUI → Shipping Returns Forecaster (pretty & insightful)
+# Sui_index.py — SUI → Shipping Returns Forecaster (pretty & insightful)
 # -----------------------------------------------------------------------------
 # Upload SUI (date, sui[, direction]) → fetch prices → build SUI features →
 # walk-forward OOS (Ridge & Logistic) → KPIs, heatmaps, ROC, correlations,
