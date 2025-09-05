@@ -1,0 +1,10 @@
+﻿streamlit
+yfinance
+plotly
+scikit-learn
+arch
+requests
+python-dateutil
+pandas
+numpy
+openpyxl
