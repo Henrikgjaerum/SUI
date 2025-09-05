@@ -467,8 +467,17 @@ if sui_hist is not None and not sui_hist.empty:
 # ===============================
 # Compute Today’s Prediction
 # ===============================
-latest_idx = features.dropna().index.max()
-latest = features.loc[latest_idx]
+# Use only the predictor columns for selecting the latest valid row
+predictor_cols = ["RV_d", "RV_w", "RV_m", "VIX_level", "Oil_ret_22d_vol", "USD_ret_22d_vol"]
+predictor_cols = [c for c in predictor_cols if c in features.columns]
+
+valid_rows = features.dropna(subset=predictor_cols)
+if valid_rows.empty:
+    st.error("Not enough data to compute predictors yet. Try increasing the history length or deselecting some macro controls.")
+    st.stop()
+
+latest = valid_rows.iloc[-1]
+latest_idx = latest.name
 
 # SUI z-score proxy for today
 if sui_hist is not None and "sui" in sui_hist.columns:
